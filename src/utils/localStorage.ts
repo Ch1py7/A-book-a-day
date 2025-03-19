@@ -18,6 +18,6 @@ export const setDate = (date: string) => {
 	localStorage.setItem('wordDate', date)
 }
 
-export const setBookToGet = (index: string) => {
+export const setBookIndex = (index: string) => {
 	localStorage.setItem('bookToGet', index)
 }

@@ -1,4 +1,4 @@
-import { getDate, getWord, setWord } from '@/utils/localStorage'
+import { getDate, getWord, setBookIndex, setDate, setWord } from '@/utils/localStorage'
 import axios from 'axios'
 import { Book, BookOpen, Calendar, ExternalLink } from 'lucide-react'
 import { useCallback, useEffect, useState } from 'react'
@@ -42,11 +42,13 @@ export const BookOfTheDay: React.FC = (): React.ReactNode => {
 	const getBook = useCallback(() => {
 		const book = books![bookToGet]
 		setBook(book.volumeInfo)
+		setBookIndex(bookToGet.toString())
 		setIsLoading(false)
 	}, [books, bookToGet])
 
 	useEffect(() => {
 		let word = ''
+		if (getDate() !== today) setDate(today)
 		if (getWord() && getDate() === today) {
 			word = getWord()
 		} else {
